@@ -59,7 +59,6 @@ class SiteUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
-
     skills = TaggableManager(blank=True)
 
     EMAIL_FIELD = 'email'

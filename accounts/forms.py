@@ -8,7 +8,7 @@ from django.contrib.auth.forms import (
 )
 from django.contrib.auth import get_user_model
 
-from taggit.forms import TagField, TextareaTagWidget
+from taggit.forms import TagField, TagWidget
 
 
 User = get_user_model()
@@ -57,8 +57,10 @@ class UserProfileUpdateForm(forms.ModelForm):
         )
 
     skills = TagField(
+        required=False,
         label='',
-        widget=TextareaTagWidget(
+        help_text='A comma separated list of skills.',
+        widget=TagWidget(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Skills',

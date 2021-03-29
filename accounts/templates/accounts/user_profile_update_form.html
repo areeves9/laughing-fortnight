@@ -32,12 +32,12 @@
 {% endblock %}
 
 {% block script %}
-<script src="{% static 'accounts/js/tagify.min.js' %}"></script>
 
 <script>
-    inputElement = document.getElementById('id_skills');
-    const tagify = new Tagify(inputElement);
-    console.log('hello');
+'use strrict';
+
+const inputElement = document.getElementById('id_skills');
+inputElement.setAttribute('data-role', 'tagsinput');
 
 </script>
 {% endblock %}
