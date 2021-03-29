@@ -8,6 +8,8 @@ from django.contrib.auth.forms import (
 )
 from django.contrib.auth import get_user_model
 
+from taggit.forms import TagField, TextareaTagWidget
+
 
 User = get_user_model()
 
@@ -53,6 +55,17 @@ class UserProfileUpdateForm(forms.ModelForm):
                 }
             )
         )
+
+    skills = TagField(
+        label='',
+        widget=TextareaTagWidget(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Skills',
+                'id': 'id_skills',
+            }
+        )
+    )
 
     class Meta:
         model = User

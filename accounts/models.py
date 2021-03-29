@@ -60,7 +60,7 @@ class SiteUser(AbstractBaseUser):
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
-    skills = TaggableManager()
+    skills = TaggableManager(blank=True)
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
