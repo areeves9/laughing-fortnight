@@ -1,4 +1,11 @@
+{% load fontawesome_5 %}
+
+<span class="edit-btn">
+    {% fa5_icon 'pencil-alt' 'fas' %}
+</span>
 <h4>Skills</h4>
+
+
 {% for s in user.skills.all %}
 <span class="badge badge-pill badge-secondary">{{ s.name }}</span>
 {% endfor %}

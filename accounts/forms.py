@@ -56,6 +56,12 @@ class UserProfileUpdateForm(forms.ModelForm):
             )
         )
 
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'skills',)
+
+
+class UserSkillsUpdateForm(forms.ModelForm):
     skills = TagField(
         required=False,
         label='',
@@ -71,7 +77,7 @@ class UserProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'skills',)
+        fields = ('skills',)
 
 
 class LoginForm(AuthenticationForm):
