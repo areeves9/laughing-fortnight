@@ -58,7 +58,7 @@ class UserProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'skills',)
+        fields = ('first_name', 'last_name',)
 
 
 class UserSkillsUpdateForm(forms.ModelForm):
