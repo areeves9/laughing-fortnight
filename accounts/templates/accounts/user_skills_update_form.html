@@ -10,20 +10,15 @@
 <div style="height: 500px;" class="container">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-6 col-lg-4 col-10 bg-light border rounded">
-            <h4 class="mt-4 mb-4 text-left">Update Profile</h4>
-            <h6 class="mt-4 mb-4 text-left">{{ user }}</h6>
-            <form action="{% url 'accounts:profile_update' request.user.unique_id %}" method="post">
+            <h4 class="mt-4 mb-4 text-left">Update Skills</h4>
+            <form action="{% url 'accounts:skills_update' request.user.unique_id %}" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button class="mx-auto btn btn-block btn-dark" 
+                <button class="mb-3 mx-auto btn btn-block btn-dark" 
                     type="submit">
-                    Update
+                    Add
                 </button>
             </form>
-            <hr/>
-            <p class="mt-1">
-                Change <a href="{% url 'accounts:password_change' %}">Password</a>
-            </p>
         </div>
     </div>
 </div>

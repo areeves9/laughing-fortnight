@@ -2,6 +2,7 @@ from accounts.tokens import account_activation_token
 from accounts.forms import (
     RegistrationForm,
     UserProfileUpdateForm,
+    UserSkillsUpdateForm,
     UserPasswordResetForm,
     UserPasswordResetConfirmForm,
 )
@@ -124,6 +125,27 @@ class UserProfileUpdateView(
     slug_url_kwarg = 'unique_id'
     success_message = 'Profile Updated!'
     template_name = 'registration/user_profile_update_form.html'
+
+    def test_func(self):
+        return self.request.user.pk == self.get_object().pk
+
+
+class UserSkillsUpdateView(
+    SuccessMessageMixin,
+    UserPassesTestMixin,
+    UpdateView
+):
+    '''
+    Edits fields for a the skills attribute of the
+    SiteUser object.
+    '''
+    model = User
+    context_object_name = 'user'
+    form_class = UserSkillsUpdateForm
+    slug_field = 'unique_id'
+    slug_url_kwarg = 'unique_id'
+    success_message = 'Skills Updated!'
+    template_name = 'registration/user_skills_update_form.html'
 
     def test_func(self):
         return self.request.user.pk == self.get_object().pk

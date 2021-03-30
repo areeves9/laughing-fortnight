@@ -1,6 +1,6 @@
 .edit-btn {
     background-color: #dbe0e6;
-    color: black;
+    color: black !important;
     padding: 0.5em;
     float: right;
     border-radius: 50%;
