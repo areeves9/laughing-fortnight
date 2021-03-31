@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+from phonenumber_field.modelfields import PhoneNumberField
 from taggit.managers import TaggableManager
 
 
@@ -60,6 +61,7 @@ class SiteUser(AbstractBaseUser):
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    phone = PhoneNumberField(blank=True, null=True)
     skills = TaggableManager(
         blank=True,
         help_text='A comma separated list of skills.'

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'fontawesome_5',
+    'phonenumber_field',
     'taggit',
 ]
 

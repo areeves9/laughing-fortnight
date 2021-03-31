@@ -1,4 +1,5 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
@@ -17,6 +18,7 @@ class Company(models.Model):
         blank=False,
         null=False,
     )
+    us_phone = PhoneNumberField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     is_licensed = models.BooleanField(default=False)
 
