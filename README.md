@@ -1,16 +1,17 @@
-# django-auth-bootstrap4
-A simple Django project comprised of a single custom authentication app, Accounts, to be used for any app requiring user email based authentication.
+# Job Site
+Creating a Django based job search website from scratch. My motivations are simple:
+to create a an online community where employers are able to easily connect with job 
+condidates without using a 3rd party hiring agency.
 
 # Project Background
-I wanted a reusable auth app that used the default Django authentication backend but with a custom auth user model, SiteUser, 
-with email set to username. 
+I am using the accounts Django app I created from my django-auth-bootstrap4 repo to 
+implement the custom user model and email based authentication. I want to give the ability 
+of a job seeker to market thier skills and expewrience in a direct and simple way. 
 
-The Accounts app also contain custom views, such as an Activate view with will send a newly registered user an 
-activation URL via email. 
+The goal of this site is to have a functionality more in line with Indeed instead of LinkedIn.
 
-Some of the default auth_views from django.contrib.auth have been overriden and have a new url in Accounts. 
-
-The Forms Django provides in django.contrib.auth have also been overriden for styling and functional purposes.
+That means no activity 'feeds' with senseless and irrelevant information that does not add 
+value to the job seeker's goal of finding employement.  
 
 # Code Style
 This project attempts to adhere to the requirements of PEP8 and was developed with flake8 styling linter installed in the code editior.
