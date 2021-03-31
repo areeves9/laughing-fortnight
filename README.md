@@ -24,7 +24,9 @@ This project attempts to adhere to the requirements of PEP8 and was developed wi
 * Mixer
 * Bootstrap4
 * Django-Crispy-Forms
-* Conda
+* Conda (for managing enviroments)
+* Pip
+* JavaScript
 
 # Quick Start
 1. Clone or download the repo.
