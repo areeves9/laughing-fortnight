@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -27,3 +28,36 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Experience(models.Model):
+    FULLTIME = 'full-time'
+    PARTIME = 'part-time'
+    CONTRACT = 'contract'
+    EMPLOYMENT_TYPE = [
+        (FULLTIME, 'full-time employment'),
+        (PARTIME, 'part-time employment'),
+        (CONTRACT, 'contract'),
+    ]
+    company = models.ForeignKey('Company', on_delete=models.PROTECT)
+    date_from = models.DateField()
+    date_to = models.DateField(blank=True, null=True)
+    description = models.TextField()
+    employment_type = models.CharField(
+        choices=EMPLOYMENT_TYPE,
+    )
+    title = models.CharField()
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
+    is_current = models.BooleanField()
+
+
+class Meta:
+    ordering = ('date_from',)
+
+
+def __str__(self):
+    return f'{self.title}, {self.company}'
