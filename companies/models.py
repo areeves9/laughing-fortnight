@@ -21,6 +21,7 @@ class Company(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = "Companies"
 
     def __str__(self):
         return self.name
@@ -53,12 +54,10 @@ class Experience(models.Model):
         on_delete=models.CASCADE,
     )
 
-    is_current = models.BooleanField()
+    is_current = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ('date_from',)
 
-class Meta:
-    ordering = ('date_from',)
-
-
-def __str__(self):
-    return f'{self.title}, {self.company}'
+    def __str__(self):
+        return self.title
