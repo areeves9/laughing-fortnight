@@ -9,14 +9,11 @@
             {% include 'django_messages.html' %}
             <!-- A hack for sure. Need to change this, edit-btn not horzontally aligned.-->
             <hr style="visibility: hidden;"/>
-            <a href="{% url 'accounts:profile_update' user.unique_id %}" class="edit-btn">
-                {% fa5_icon 'pencil-alt' 'fas' %}
-            </a>
-            <h4 class="mt-4 mb-4">Profile</h4>
-            <h6 class="text-left">{{ user }}</h6>
-            <h6 class="text-left">{{ user.first_name }} {{ user.last_name }}</h6>
+            {% include "accounts/partials/contact.html" %}
             <hr/>
             {% include "accounts/partials/skills.html" %}
+            <hr/>
+            {% include "accounts/partials/experience.html" %}
         </div>
     </div>
 </div>
