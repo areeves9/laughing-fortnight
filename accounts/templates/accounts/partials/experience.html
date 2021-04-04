@@ -1,8 +1,9 @@
 {% load fontawesome_5 %}
-<a href="{% url 'accounts:profile_update' user.unique_id %}" class="edit-btn">
+<h4 class="mt-4 mb-4">Experience</h4>
+
+{% for e in user.experience_set.all %}
+<a href="{% url 'companies:experience_update' e.pk %}" class="edit-btn">
     {% fa5_icon 'pencil-alt' 'fas' %}
 </a>
-<h4 class="mt-4 mb-4">Experience</h4>
-{% for e in user.experience_set.all %}
 <h6 class="mb-5 text-left">{{ e }}</h6>
 {% endfor %}

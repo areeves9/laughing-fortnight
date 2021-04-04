@@ -43,6 +43,7 @@ class Experience(models.Model):
     date_from = models.DateField()
     date_to = models.DateField(blank=True, null=True)
     description = models.TextField()
+    headline = models.CharField(max_length=255)
     employment_type = models.CharField(
         choices=EMPLOYMENT_TYPE,
         default=FULLTIME,
