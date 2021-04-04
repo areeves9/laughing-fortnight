@@ -4,7 +4,12 @@ from companies.models import Company, Experience
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    fields = ('name', 'email',)
+    fields = (
+        'name',
+        'email',
+        'us_phone',
+        'is_licensed',
+    )
 
 
 class ExperienceAdmin(admin.ModelAdmin):
