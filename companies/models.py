@@ -2,6 +2,8 @@ from django.conf import settings
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+from django.urls import reverse
+
 # Create your models here.
 
 
@@ -62,3 +64,6 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('companies:experience-detail', kwargs={'pk': self.pk})

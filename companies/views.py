@@ -1,14 +1,42 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.detail import DetailView
 
 from django.urls import reverse_lazy
 
-
-from companies.forms import ExperienceUpdateForm
 from companies.models import Experience
 
 # Create your views here.
+
+
+class ExperienceCreateView(
+    SuccessMessageMixin,
+    CreateView,
+):
+    '''
+    Creates an experience instance with FK relation to a User.
+    '''
+    model = Experience
+    fields = (
+        'company',
+        'date_from',
+        'date_to',
+        'description',
+        'headline',
+        'employment_type',
+        'is_current',
+
+    )
+
+
+class ExperienceDetailView(
+    DetailView
+):
+    '''
+    Retrieves an Experience instance.
+    '''
+    model = Experience
 
 
 class ExperienceUpdateView(
@@ -19,13 +47,22 @@ class ExperienceUpdateView(
     '''
     Edits fields for a given SiteUser instance.
     '''
+    fields = (
+        'company',
+        'date_from',
+        'date_to',
+        'description',
+        'headline',
+        'employment_type',
+        'is_current',
+
+    )
+
     model = Experience
     context_object_name = 'experience'
-    form_class = ExperienceUpdateForm
     slug_field = 'comapny'
     slug_url_kwarg = 'comapny'
     success_message = 'Expereince Updated!'
-    template_name = 'companies/user_experience_update_form.html'
 
     def get_success_url(self):
         return reverse_lazy(

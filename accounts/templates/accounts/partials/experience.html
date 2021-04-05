@@ -1,9 +1,15 @@
 {% load fontawesome_5 %}
+
+<a href="{% url 'companies:experience-create' %}" class="float-right">
+    {% fa5_icon 'plus' 'fas' %}
+</a>
 <h4 class="mt-4 mb-4">Experience</h4>
 
 {% for e in user.experience_set.all %}
-<a href="{% url 'companies:experience_update' e.pk %}" class="edit-btn">
+<a href="{% url 'companies:experience-update' e.pk %}" class="edit-btn">
     {% fa5_icon 'pencil-alt' 'fas' %}
 </a>
-<h6 class="mb-5 text-left">{{ e }}</h6>
+<h6 class="mb-5 text-left">
+    <a href="{{ e.get_absolute_url }}">{{ e }}</a>
+</h6>
 {% endfor %}
