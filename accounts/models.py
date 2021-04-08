@@ -70,7 +70,11 @@ class SiteUser(AbstractBaseUser):
         verbose_name='city',
         on_delete=models.PROTECT,
     )
-    phone = PhoneNumberField(blank=True, null=True)
+    phone = PhoneNumberField(
+        blank=True,
+        null=True,
+        help_text='For US phone number include +1'
+    )
     skills = TaggableManager(
         blank=True,
         help_text='A comma separated list of skills.'
@@ -88,6 +92,9 @@ class SiteUser(AbstractBaseUser):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
+
+    def get_full_name(self):
+        return self.first_name + ' ' + self.last_name
 
     def get_absolute_url(self):
         return reverse(
