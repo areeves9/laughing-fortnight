@@ -1,7 +1,8 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
+
 
 from django.urls import reverse_lazy
 
@@ -12,6 +13,7 @@ from companies.models import Experience
 
 class ExperienceCreateView(
     SuccessMessageMixin,
+    LoginRequiredMixin,
     CreateView,
 ):
     '''
@@ -20,14 +22,27 @@ class ExperienceCreateView(
     model = Experience
     fields = (
         'company',
+        'title',
         'date_from',
         'date_to',
         'description',
         'headline',
         'employment_type',
         'is_current',
-
     )
+    success_message = 'Expereince Added!'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'accounts:profile',
+            kwargs={
+                'unique_id': self.request.user.unique_id
+            }
+        )
 
 
 class ExperienceDetailView(
@@ -41,6 +56,7 @@ class ExperienceDetailView(
 
 class ExperienceUpdateView(
     SuccessMessageMixin,
+    LoginRequiredMixin,
     UserPassesTestMixin,
     UpdateView
 ):
@@ -49,6 +65,7 @@ class ExperienceUpdateView(
     '''
     fields = (
         'company',
+        'title',
         'date_from',
         'date_to',
         'description',
@@ -60,8 +77,8 @@ class ExperienceUpdateView(
 
     model = Experience
     context_object_name = 'experience'
-    slug_field = 'comapny'
-    slug_url_kwarg = 'comapny'
+    slug_field = 'company'
+    slug_url_kwarg = 'company'
     success_message = 'Expereince Updated!'
 
     def get_success_url(self):
