@@ -6,6 +6,7 @@ from companies.models import Company, Experience
 class CompanyAdmin(admin.ModelAdmin):
     fields = (
         'name',
+        'city',
         'email',
         'us_phone',
         'is_licensed',
