@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.db import models
+
+from cities_light.models import City
 from phonenumber_field.modelfields import PhoneNumberField
 
 from django.urls import reverse
@@ -14,6 +16,12 @@ class Company(models.Model):
         unique=True,
         blank=False,
         null=False,
+    )
+
+    city = models.ForeignKey(
+        City,
+        verbose_name='city',
+        on_delete=models.PROTECT,
     )
     name = models.CharField(max_length=255, blank=False, null=False)
     us_phone = PhoneNumberField(blank=True, null=True)
