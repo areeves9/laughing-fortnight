@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts',
+    'cities_light',
     'companies',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,6 +84,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 LOGIN_URL = reverse_lazy('accounts:login')
 LOGIN_REDIRECT_URL = reverse_lazy('accounts:profile')
+
+
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['US']
+CITIES_LIGHT_INCLUDE_CITY_TYPES = ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT',]
 
 
 # Database
