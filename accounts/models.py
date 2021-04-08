@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+
+from cities_light.models import City
 from phonenumber_field.modelfields import PhoneNumberField
 from taggit.managers import TaggableManager
 
@@ -61,6 +63,11 @@ class SiteUser(AbstractBaseUser):
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
+    city = models.ForeignKey(
+        City,
+        verbose_name='city',
+        on_delete=models.PROTECT,
+    )
     phone = PhoneNumberField(blank=True, null=True)
     skills = TaggableManager(
         blank=True,
