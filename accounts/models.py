@@ -47,24 +47,14 @@ class SiteUser(AbstractBaseUser):
     unique_id = models.UUIDField(
         primary_key=False,
         default=uuid.uuid4,
-        editable=False,
-        unique=True,
+        editable=False, 
+        unique=True
     )
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
         unique=True
     )
-    first_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
-    about = models.TextField(blank=True, null=True)
-    headline = models.CharField(max_length=255, blank=True, null=True)
-    is_active = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-    last_login = models.DateTimeField(auto_now=True)
-    date_joined = models.DateTimeField(auto_now_add=True)
-
     city = models.ForeignKey(
         City,
         verbose_name='city',
@@ -79,6 +69,17 @@ class SiteUser(AbstractBaseUser):
         blank=True,
         help_text='A comma separated list of skills.'
     )
+
+    first_name = models.CharField(max_length=150, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
+    about = models.TextField(blank=True, null=True)
+    headline = models.CharField(max_length=255, blank=True, null=True)
+
+    is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    last_login = models.DateTimeField(auto_now=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
@@ -95,6 +96,7 @@ class SiteUser(AbstractBaseUser):
 
     def get_full_name(self):
         return self.first_name + ' ' + self.last_name
+
 
     def get_absolute_url(self):
         return reverse(
