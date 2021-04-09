@@ -12,9 +12,12 @@
 <h6 class="text-left">
     <a href="{{ e.get_absolute_url }}">{{ e }}</a>
 </h6>
+<h6 class="text-left mt-n1">
+    <p>{{ e.company.name }}</p>
+</h6>
 
 <h6 class="text-left mt-n1">
     {{ e.company.city.name }}, {{ e.company.city.region.name }}
 </h6>
-<p class="text-secondary text-left mb-4">{{ e.date_from }} to {{ e.date_to }}</p>
+<p class="text-secondary text-left mt-n1 mb-4">{{ e.date_from|date:"m/d/Y" }} to {{ e.date_to|date:"m/d/Y" }}</p>
 {% endfor %}

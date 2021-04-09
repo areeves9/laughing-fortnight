@@ -6,3 +6,20 @@
 <h6 class="text-left">{{ user.headline }}</h6>
 <h6 class="text-secondary text-left">{{ user.city.name }}, {{ user.city.region.name }}</h6>
 <p class="text-left">{{ user.about }}</p>
+
+<ul class="contact-list">
+    <li class="text-secondary">{% fa5_icon 'envelope' 'fas' %} {{ user.email }}</li>
+    <li class="text-secondary">{% fa5_icon 'phone' 'fas' %} {{ user.phone }}</li>
+</ul>
+
+<style>
+    .contact-list {
+        list-style: none;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .contact-list > li {
+        display: block;
+    }
+</style>

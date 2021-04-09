@@ -73,5 +73,8 @@ class Experience(models.Model):
     def __str__(self):
         return self.title
 
+    def get_dates_of_employment(self):
+        return str(self.date_from) + ' to ' + str(self.date_to) 
+
     def get_absolute_url(self):
         return reverse('companies:experience-detail', kwargs={'pk': self.pk})

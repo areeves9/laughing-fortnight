@@ -65,8 +65,7 @@ class SiteUser(AbstractBaseUser):
         null=True,
         help_text='For US phone number include +1'
     )
-    skills = TaggableManager(
-        blank=True,
+    skills = TaggableManager(blank=True,
         help_text='A comma separated list of skills.'
     )
 
