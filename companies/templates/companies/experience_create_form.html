@@ -23,7 +23,9 @@
                 {{ form|crispy }}
                 <button class="mx-auto btn btn-block btn-dark" 
                     type="submit">
-                    Create
+                    {% if view_name == 'companies:experience-update' %} Update 
+                    {% elif view_name == 'companies:experience-create' %} Create 
+                    {% endif %}
                 </button>
             </form>
             <hr/>
