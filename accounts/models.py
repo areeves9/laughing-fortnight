@@ -69,7 +69,7 @@ class SiteUser(AbstractBaseUser):
         blank=True,
         help_text='A comma separated list of skills.'
     )
-    website = models.URLField()
+    website = models.URLField(blank=True, null=True)
 
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
