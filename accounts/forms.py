@@ -31,34 +31,25 @@ class UserPasswordResetForm(PasswordResetForm):
 
 
 class UserProfileUpdateForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    first_name = forms.CharField(
-        label='',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'First Name',
-                'id': 'input-first-name'
-                }
-            )
-        )
-
-    last_name = forms.CharField(
-        label='',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Last Name',
-                'id': 'input-last-name'
-                }
-            )
-        )
 
     class Meta:
         model = User
-        fields = ('headline', 'about', 'city', 'phone', 'is_available',)
+        fields = (
+            'headline',
+            'city',
+            'phone',
+            'website',
+            'is_available',
+        )
+
+
+class UserAboutUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = (
+            'about',
+        )
 
 
 class UserSkillsUpdateForm(forms.ModelForm):

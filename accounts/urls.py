@@ -62,10 +62,16 @@ urlpatterns = [
         ), name='profile_update'
     ),
     path(
-        'skills/<uuid:unique_id>/update/',
+        'profile/skills/<uuid:unique_id>/update/',
         views.UserSkillsUpdateView.as_view(
             template_name='accounts/user_skills_update_form.html'
         ), name='skills_update'
+    ),
+    path(
+        'profile/about/<uuid:unique_id>/update/',
+        views.UserAboutUpdateView.as_view(
+            template_name='accounts/user_about_update_form.html'
+        ), name='about_update'
     ),
     path(
         'registration/complete/',

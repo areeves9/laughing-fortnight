@@ -3,13 +3,17 @@
     {% fa5_icon 'pencil-alt' 'fas' %}
 </a>
 <h4 class="mt-4">{{ user.get_full_name }}</h4>
+{% if user.is_available %}
+<span class="badge badge-success mb-1">Open to Work</span>
+{% endif %}
 <h6 class="text-left">{{ user.headline }}</h6>
-<h6 class="text-secondary text-left">{{ user.city.name }}, {{ user.city.region.name }}</h6>
+<h6 class="text-secondary text-left">{% fa5_icon 'map-marker' 'fas' %} {{ user.city.name }}, {{ user.city.region.name }}</h6>
 <p class="text-left">{{ user.about }}</p>
 
 <ul class="contact-list">
     <li class="text-secondary">{% fa5_icon 'envelope' 'fas' %} {{ user.email }}</li>
     <li class="text-secondary">{% fa5_icon 'phone' 'fas' %} {{ user.phone }}</li>
+    <li class="text-secondary">{% fa5_icon 'link' 'fas' %} {{ user.website }}</li>
 </ul>
 
 <style>
