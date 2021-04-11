@@ -47,7 +47,7 @@ class SiteUser(AbstractBaseUser):
     unique_id = models.UUIDField(
         primary_key=False,
         default=uuid.uuid4,
-        editable=False, 
+        editable=False,
         unique=True
     )
     email = models.EmailField(
@@ -65,9 +65,11 @@ class SiteUser(AbstractBaseUser):
         null=True,
         help_text='For US phone number include +1'
     )
-    skills = TaggableManager(blank=True,
+    skills = TaggableManager(
+        blank=True,
         help_text='A comma separated list of skills.'
     )
+    website = models.URLField()
 
     first_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150, blank=True)
@@ -77,7 +79,10 @@ class SiteUser(AbstractBaseUser):
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_available = models.BooleanField(default=False, help_text="Open to new oppurtunities.")
+    is_available = models.BooleanField(
+        default=False,
+        help_text="Open to new oppurtunities."
+    )
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
@@ -96,7 +101,6 @@ class SiteUser(AbstractBaseUser):
 
     def get_full_name(self):
         return self.first_name + ' ' + self.last_name
-
 
     def get_absolute_url(self):
         return reverse(
