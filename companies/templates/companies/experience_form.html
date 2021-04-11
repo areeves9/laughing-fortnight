@@ -7,10 +7,16 @@
 
 {% block content %}
 
+{% with request.resolver_match.view_name as view_name %}
+
 <div style="height: 500px;" class="container">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-6 col-lg-4 col-10 bg-light border rounded">
-            <h4 class="mt-4 mb-4 text-left">Create Experience</h4>
+            <h4 class="mt-4 mb-4 text-left">
+                {% if view_name == 'companies:experience-update' %} Update Experience 
+                {% elif view_name == 'companies:experience-create' %} Create Experience 
+                {% endif %}
+            </h4>
             <h6 class="mt-4 mb-4 text-left">{{ experience }}</h6>
             <form action="{% url 'companies:experience-create' %}" method="post">
                 {% csrf_token %}
@@ -21,8 +27,13 @@
                 </button>
             </form>
             <hr/>
+            {% if view_name == 'companies:experience-update'%}
+            <a class="mb-3 mx-auto btn btn-block btn-primary" href="{% url 'companies:experience-delete' experience.pk %}">Delete</a>
+            {% endif %}
         </div>
     </div>
 </div>
+
+{% endwith %}
 
 {% endblock %}

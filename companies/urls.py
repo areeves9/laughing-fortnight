@@ -17,4 +17,8 @@ urlpatterns = [
         'experience/<int:pk>/update',
         views.ExperienceUpdateView.as_view(), name='experience-update'
     ),
+    path(
+        'experience/<int:pk>/delete',
+        views.ExperienceDeleteView.as_view(), name='experience-delete'
+    ),
 ]
