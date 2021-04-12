@@ -99,12 +99,21 @@ class LoginForm(AuthenticationForm):
 
 
 class RegistrationForm(UserCreationForm):
+    first_name = forms.CharField(
+        label='',
+        widget=forms.TextInput
+    )
+    last_name = forms.CharField(
+        label='',
+        widget=forms.TextInput
+    )
     email = forms.EmailField(
         label='',
         widget=forms.EmailInput
     )
     password1 = forms.CharField(
         label='',
+        help_text='<ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul>',
         widget=forms.PasswordInput
     )
     password2 = forms.CharField(
@@ -114,10 +123,12 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('email',)
+        fields = ('email', 'first_name', 'last_name',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs['placeholder'] = 'First Name'
+        self.fields['last_name'].widget.attrs['placeholder'] = 'Last Name'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
