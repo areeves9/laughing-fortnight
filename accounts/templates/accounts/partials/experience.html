@@ -3,21 +3,22 @@
 <a class="float-right" href="{% url 'companies:experience-create' %}">
     {% fa5_icon 'plus' 'fas' %}
 </a>
-<h4 class="mt-4 mb-4">Experience</h4>
+<h4 class="mt-4">Experience</h4>
 
-{% for e in user.experience_set.all %}
-<a class="edit-btn" href="{% url 'companies:experience-update' e.pk %}">
+{% for experience in user.experience_set.all %}
+<a class="edit-btn" href="{% url 'companies:experience-update' experience.pk %}">
     {% fa5_icon 'pencil-alt' 'fas' %}
 </a>
-<h6 class="text-left">
-    <a href="{{ e.get_absolute_url }}">{{ e }}</a>
-</h6>
+<h5 class="text-left">
+    <a class="text-dark" href="{{ experience.get_absolute_url }}">{{ experience }}</a>
+</h5>
 <h6 class="text-left mt-n1">
-    <p>{{ e.company.name }}</p>
+    <p>{{ experience.company.name }} • {{ experience.employment_type|title }}</p>
 </h6>
 
-<h6 class="text-left mt-n1">
-    {{ e.company.city.name }}, {{ e.company.city.region.name }}
+<p class="text-secondary text-left mt-n3">{{ experience.date_from|date:"M Y" }} - {{ experience.date_to|date:"M Y" }}</p>
+<h6 class="text-left text-secondary mt-n3 mb-3">
+    {{ experience.company.city.name }}, {{ experience.company.city.region.name }}
 </h6>
-<p class="text-secondary text-left mt-n1 mb-4">{{ e.date_from|date:"m/d/Y" }} to {{ e.date_to|date:"m/d/Y" }}</p>
+<p>{{ experience.description }}</p>
 {% endfor %}

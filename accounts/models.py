@@ -59,6 +59,8 @@ class SiteUser(AbstractBaseUser):
         City,
         verbose_name='city',
         on_delete=models.PROTECT,
+        blank=True,
+        null=True,
     )
     phone = PhoneNumberField(
         blank=True,
