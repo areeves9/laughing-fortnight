@@ -12,7 +12,7 @@ from companies.models import Company, Experience
 # Create your views here.
 
 
-class CompaniesListView(ListView):
+class CompanyListView(ListView):
     '''
     List all the companies in the DB.
     '''
@@ -24,6 +24,14 @@ class CompaniesListView(ListView):
     #     context = super().get_context_data(**kwargs)
     #     context['companies'] = timezone.now()
     #     return context
+
+
+class CompanyDetailView(DetailView):
+    '''
+    Retrieve Company instance from DB.
+    '''
+    model = Company
+    template_name = 'companies/company_detail.html'
 
 
 

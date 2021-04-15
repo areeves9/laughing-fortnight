@@ -7,7 +7,10 @@
 <div style="height: 500px;" class="container">
     <div class="row h-100 justify-content-center align-items-center">
         {% for company in object_list %}
-        <h6>{{ company }}</h6>
+        <h6>
+            <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+        </h6>
+
         {% endfor %}
     </div>
 </div>

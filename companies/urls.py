@@ -7,7 +7,11 @@ app_name = 'companies'
 urlpatterns = [
     path(
         '',
-        views.CompaniesListView.as_view(), name='companies-list'
+        views.CompanyListView.as_view(), name='company-list'
+    ),
+    path(
+        'company/<int:pk>/detail',
+        views.CompanyDetailView.as_view(), name='company-detail'
     ),
     path(
         'experience/<int:pk>/detail',

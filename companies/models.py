@@ -36,6 +36,9 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse('companies:company-detail', kwargs={'pk': self.pk})
+
 
 class Experience(models.Model):
     FULLTIME = 'full-time'
