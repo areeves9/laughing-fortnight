@@ -6,6 +6,10 @@ app_name = 'companies'
 
 urlpatterns = [
     path(
+        '',
+        views.CompaniesListView.as_view(), name='companies-list'
+    ),
+    path(
         'experience/<int:pk>/detail',
         views.ExperienceDetailView.as_view(), name='experience-detail'
     ),

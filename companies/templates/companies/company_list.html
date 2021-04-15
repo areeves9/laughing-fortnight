@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div style="height: 500px;" class="container">
+    <div class="row h-100 justify-content-center align-items-center">
+        {% for company in object_list %}
+        <h6>{{ company }}</h6>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

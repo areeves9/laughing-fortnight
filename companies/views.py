@@ -2,13 +2,29 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 
 from django.urls import reverse_lazy
 
-from companies.models import Experience
+from companies.models import Company, Experience
 
 # Create your views here.
+
+
+class CompaniesListView(ListView):
+    '''
+    List all the companies in the DB.
+    '''
+    model = Company
+    paginate_by = 10
+    template_name = 'companies/company_list.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['companies'] = timezone.now()
+    #     return context
+
 
 
 class ExperienceCreateView(
