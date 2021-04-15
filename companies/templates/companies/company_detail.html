@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load fontawesome_5 %}
 
 {% load static %}
 
@@ -7,10 +8,11 @@
 <div style="height: 500px;" class="container">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-6 col-lg-4 col-10 bg-light border rounded">
+
             {% if company.is_licensed %}
-            <span class="badge badge-pill badge-primary float-right">Licensed Business</span>
+            <span class="badge badge-pill badge-primary text-white">{% fa5_icon 'check' 'fas' %}</span>
             {% endif %}
-            <h6>{{ company.name }}</h6>
+            <h6 class="text-left">{{ company.name }}</h6>
             <p>{{ company.city.name }}, {{ company.city.region.name }}</p>
             <p>{{ company.email }}</p>
         </div>
