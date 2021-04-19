@@ -12,7 +12,7 @@
             {% if company.is_licensed %}
             <span class="badge badge-pill badge-primary text-white">{% fa5_icon 'check' 'fas' %}</span>
             {% endif %}
-            <h6 class="text-left">{{ company.name }}</h6>
+            <h4 class="text-left">{{ company.name }}</h4>
             <p>{{ company.city.name }}, {{ company.city.region.name }}</p>
             <p>{{ company.email }}</p>
         </div>

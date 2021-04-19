@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load fontawesome_5 %}
 
 {% load static %}
 
@@ -6,12 +7,18 @@
 
 <div style="height: 500px;" class="container">
     <div class="row h-100 justify-content-center align-items-center">
-        {% for company in object_list %}
-        <h6>
-            <a href="{{ company.get_absolute_url }}">{{ company }}</a>
-        </h6>
-
-        {% endfor %}
+        <div class="col-md-6 col-lg-4 col-10 bg-light border rounded">
+            <h4 class="mt-4 mb-4 text-left">Companies</h4>
+            {% for company in object_list %}
+            {% if company.is_licensed %}
+            <span class="badge badge-pill badge-primary text-white">{% fa5_icon 'check' 'fas' %}</span>
+            {% endif %}
+            <h6>
+                <a href="{{ company.get_absolute_url }}">{{ company }}</a>
+            </h6>
+            <p>{{ company.city.name }}, {{ company.city.region.name }}</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
