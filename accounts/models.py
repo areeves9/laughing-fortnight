@@ -2,7 +2,9 @@ import uuid
 from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
+    AbstractBaseUser,
+    BaseUserManager,
+    Group,
 )
 
 from cities_light.models import City
@@ -85,6 +87,7 @@ class SiteUser(AbstractBaseUser):
         default=False,
         help_text="Open to new oppurtunities."
     )
+    groups = models.ManyToManyField(Group, blank=True)
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
