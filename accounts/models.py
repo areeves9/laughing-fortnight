@@ -5,6 +5,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     Group,
+    Permission
 )
 
 from cities_light.models import City
@@ -88,6 +89,7 @@ class SiteUser(AbstractBaseUser):
         help_text="Open to new oppurtunities."
     )
     groups = models.ManyToManyField(Group, blank=True)
+    user_permissions = models.ManyToManyField(Permission, blank=True)
     last_login = models.DateTimeField(auto_now=True)
     date_joined = models.DateTimeField(auto_now_add=True)
 
